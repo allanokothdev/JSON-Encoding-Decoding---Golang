@@ -9,7 +9,7 @@ import (
 type User struct {
 	Firstname string `json:"firstname"`
 	Lastname  string `json:"lastname"`
-	Age		  int    `json:"age"`	
+	Age       int    `json:"age"`
 }
 
 func main() {
@@ -23,11 +23,12 @@ func main() {
 	http.HandleFunc("/encode", func(w http.ResponseWriter, r *http.Request) {
 		peter := User{
 			Firstname: "John",
-			Lastname: "Doe",
-			Age: 25,
+			Lastname:  "Doe",
+			Age:       25,
 		}
 
 		json.NewEncoder(w).Encode(peter)
 
-		http.ListenAndServe(":8080", nil)
 	})
+	http.ListenAndServe(":8080", nil)
+}
